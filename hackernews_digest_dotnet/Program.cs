@@ -194,9 +194,12 @@ class Program
     private static List<Regex> BuildFilters(Configuration configuration)
     {
         var result = new List<Regex>(configuration.Filters.Count);
-        foreach (var filter in configuration.Filters)
+        foreach (var filters in configuration.Filters)
         {
-            result.Add(new Regex(filter.Value, RegexOptions.Compiled));
+            foreach (var filter in filters.Value.Split(',', StringSplitOptions.RemoveEmptyEntries))
+            {
+                result.Add(new Regex(filter, RegexOptions.Compiled));
+            }
         }
         return result;
     }
