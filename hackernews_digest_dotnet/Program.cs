@@ -7,11 +7,6 @@ namespace hackernews_digest_dotnet;
 
 class Program
 {
-    static Program()
-    {
-        GC.TryStartNoGCRegion(64 * 1024 * 1024); // a little bit cheating whatever
-    }
-    
     private readonly HttpClient _hnClient;
     private readonly SqliteConnection _db;
     private readonly Configuration _configuration;

@@ -11,4 +11,13 @@
       <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="db.sqlite" Condition="Exists('$(MSBuildProjectDirectory)\db.sqlite')">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="config.json" Condition="Exists('$(MSBuildProjectDirectory)\config.json')">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
